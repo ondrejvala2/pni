@@ -208,3 +208,4 @@ __marimo__/
 
 # Ignore data that should not be public
 example_data
+_tmp_dir
