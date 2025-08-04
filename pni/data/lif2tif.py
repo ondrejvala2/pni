@@ -3,6 +3,7 @@ import liffile
 import tifffile
 import numpy as np
 import os
+from pni.utils import prepare_paths
 
 class Lif2Tif(FormatConverter):
     def convert(self, source_file, output_dir):
@@ -14,7 +15,7 @@ class Lif2Tif(FormatConverter):
             lif_path (str): Path to the input .lif file.
             output_dir (str): Directory to save the output .tif files.
         """
-        os.makedirs(output_dir, exist_ok=True)
+        source_file, output_dir = prepare_paths(source_file, output_dir)
 
         try:
             lif_file = liffile.LifFile(source_file)
