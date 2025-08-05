@@ -14,7 +14,10 @@ def get_files_from_dir(dir_path: Path, suffix: str) -> List[Path]:
     Returns:
         List[Path]: List of Path objects representing matching files.
     """
-    return [file for file in dir_path.iterdir() if file.is_file() and file.suffix == suffix]
+    if suffix[0] != ".":
+        suffix = "." + suffix
+
+    return sorted([file for file in dir_path.iterdir() if file.is_file() and file.suffix == suffix])
 
 def prepare_paths(source_file : str|Path, output_dir: str|Path) -> Tuple[Path, Path]:
     source_file = Path(source_file)
